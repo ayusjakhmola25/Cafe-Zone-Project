@@ -1,0 +1,570 @@
+/* Reset & Base */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    /* Keeping light background with a subtle light blue gradient */
+    background: linear-gradient(135deg, #f9f9f9 0%, #e8f0f5 100%);
+    min-height: 100vh;
+}
+
+/* --- HEADER STYLES (Logo | Search/Filter | Nav Links) --- */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Soft Blue Gradient for Header */
+    background: linear-gradient(90deg, #A9CCE3, #5DADE2);
+    padding: 10px 20px;
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    flex-wrap: wrap; 
+}
+
+.logo-title {
+    display: flex;
+    align-items: center;
+    flex-basis: 25%;
+    min-width: 180px;
+}
+
+.logo {
+    width: 55px;
+    height: 55px;
+    object-fit: cover;
+    margin-right: 12px;
+    border-radius: 50%;
+    background: #fff;
+    animation: logoSpin 4s linear infinite;
+}
+
+@keyframes logoSpin {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+}
+
+/* --- ANIMATION KEYFRAMES FOR TITLE (Blue Glow) --- */
+@keyframes titleGlow {
+    0%, 100% {
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.4), 0 0 10px rgba(255, 255, 255, 0.2);
+    }
+    50% {
+        /* Title Glow color changed to soft blue */
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #5DADE2; 
+    }
+}
+/* ------------------------------------------- */
+
+.logo-title h1 {
+    font-size: 1.6rem;
+    margin: 0;
+    font-weight: 700;
+    animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+/* Center Controls (Search and Filters) */
+.header-middle {
+    flex-grow: 1; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 0 15px;
+    max-width: 650px; 
+}
+
+.search-panel {
+    display: flex;
+    width: 100%;
+    background-color: white; 
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    padding: 5px 15px;
+    align-items: center;
+}
+
+.search-input {
+    flex-grow: 1;
+    border: none;
+    font-size: 0.95rem;
+    padding: 3px 0;
+    outline: none;
+}
+
+.mic-icon {
+    /* Changed from green to soft blue */
+    color: #5DADE2; 
+    font-size: 1.1rem;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.veg-nonveg-toggle {
+    /* Changed from dark green to soft blue */
+    background-color: #5DADE2; 
+    border-radius: 18px;
+    padding: 3px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.toggle-button {
+    border: none;
+    padding: 6px 12px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.85rem;
+    background-color: transparent;
+    color: #fff; 
+    transition: all 0.3s ease;
+}
+
+.toggle-button.active {
+    background-color: #ffffff; 
+    /* Active color changed to soft blue */
+    color: #5DADE2; 
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.nav-links {
+    flex-basis: 20%; 
+    text-align: right;
+    min-width: 150px;
+}
+
+.nav-links a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: white;
+    transition: width 0.3s;
+}
+
+.nav-links a:hover {
+    color: #c8e6c9;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* --- CATEGORY FILTER (Centered Images) --- */
+.category-filters-container {
+    display: flex;
+    justify-content: center; /* Centering the items */
+    padding: 15px 20px;
+    gap: 25px; 
+    max-width: 1100px;
+    margin: 0 auto;
+    border-bottom: 1px solid #eee;
+}
+
+.category-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    flex-shrink: 0; 
+    transition: transform 0.2s;
+}
+
+.category-item:hover {
+    transform: scale(1.05);
+}
+
+.category-image {
+    width: 70px; 
+    height: 70px;
+    border-radius: 50%; 
+    object-fit: cover; 
+    border: 3px solid #fff; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); 
+}
+
+.category-name {
+    margin-top: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #333;
+}
+
+/* --- MAIN CONTENT STYLES --- */
+.section-title {
+    text-align: center;
+    margin: 25px 0 15px 0;
+    /* Section title color changed to Dark Blue/Gray */
+    color: #34495E; 
+    font-size: 2rem;
+    font-weight: bold;
+    animation: fadeIn 1.5s ease;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(-20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    padding: 0 20px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+    animation: fadeIn 2s ease;
+}
+
+/* Restaurant Card Styling */
+.menu-item.menu-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    overflow: hidden;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 0;
+    font-weight: normal;
+    color: #333;
+}
+
+.menu-item.menu-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    background: #ffffff;
+}
+
+.image-block {
+    width: 100%;
+    height: 140px; 
+    overflow: hidden;
+}
+
+.item-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.menu-item.menu-card:hover .item-image {
+    transform: scale(1.05);
+}
+
+.item-details {
+    padding: 10px 12px;
+}
+
+.title-rating {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.item-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    /* Item title color changed to Dark Blue/Gray */
+    color: #34495E; 
+    margin: 0;
+    flex-grow: 1;
+    padding-right: 5px;
+}
+
+.item-rating {
+    /* Rating background changed to soft blue */
+    background-color: #5DADE2; 
+    color: white;
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    flex-shrink: 0;
+}
+
+.star-icon {
+    color: white; 
+    font-size: 0.9rem;
+    line-height: 1;
+}
+
+.item-description {
+    font-size: 0.85rem;
+    color: #666;
+    margin: 0 0 8px 0;
+}
+
+.item-price {
+    font-size: 1rem;
+    font-weight: 700;
+    /* Price color changed to soft blue */
+    color: #5DADE2;
+}
+
+/* --- NEW PROFILE FORM STYLES --- */
+
+.profile-container {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.profile-container h2 {
+    /* Profile H2 color changed to Dark Blue/Gray */
+    color: #34495E;
+    margin-bottom: 25px;
+}
+
+.profile-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-container label {
+    font-weight: 600;
+    color: #555;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.profile-container input[type="text"],
+.profile-container input[type="tel"],
+.profile-container input[type="email"],
+.profile-container input[type="date"],
+.profile-container select {
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box; 
+    transition: border-color 0.3s;
+}
+
+.profile-container input:focus,
+.profile-container select:focus {
+    /* Focus border changed to soft blue */
+    border-color: #5DADE2;
+    outline: none;
+}
+
+/* Style for the non-editable email field */
+.profile-container input[readonly] {
+    background-color: #f5f5f5;
+    color: #777;
+    cursor: default;
+}
+
+.update-button {
+    /* Button color changed to soft blue */
+    background-color: #5DADE2;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.update-button:hover {
+    /* Button hover color changed to darker blue */
+    background-color: #4682B4;
+}
+
+/* --- LOGIN/REGISTER PAGE STYLES --- */
+
+/* Ensures the header bar is visible on the login page */
+.login-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Soft Blue Gradient for Login Header */
+    background: linear-gradient(90deg, #A9CCE3, #5DADE2);
+    padding: 15px 20px;
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.login-header .logo-title {
+    min-width: unset;
+}
+
+/* Center the form vertically and horizontally on the screen */
+.login-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 120px); /* Adjust height for header/footer space */
+    padding: 20px;
+}
+
+.login-form {
+    /* Base Container Style - Used for both Login and Register form containers */
+    max-width: 400px;
+    width: 100%;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.login-form h2 {
+    /* H2 color changed to Dark Blue/Gray */
+    color: #34495E;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.login-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form label {
+    text-align: left;
+    font-weight: 600;
+    color: #555;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    display: none; 
+}
+
+.login-form input {
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.login-form input:focus {
+    /* Focus border changed to soft blue */
+    border-color: #5DADE2;
+    outline: none;
+}
+
+.login-button {
+    /* Button color changed to soft blue */
+    background-color: #5DADE2;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-top: 10px;
+    transition: background-color 0.3s ease, transform 0.1s;
+}
+
+.login-button:hover {
+    /* Button hover color changed to darker blue */
+    background-color: #4682B4;
+    transform: translateY(-1px);
+}
+
+.register-link-text {
+    margin-top: 20px;
+    font-size: 0.95rem;
+    color: #666;
+}
+
+.register-link-text a {
+    /* Link color changed to soft blue */
+    color: #5DADE2;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-footer {
+    /* Soft Blue Gradient for Login Footer */
+    background: linear-gradient(90deg, #5DADE2, #A9CCE3);
+    color: white;
+    text-align: center;
+    padding: 18px 10px;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+    position: static; 
+}
+
+
+/* --- FOOTER STYLES --- */
+footer {
+    /* Soft Blue Gradient for Footer */
+    background: linear-gradient(90deg, #5DADE2, #A9CCE3);
+    color: white;
+    text-align: center;
+    padding: 18px 10px;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+}
+
+footer p {
+    font-size: 1.05rem;
+    font-weight: 500;
+}
+
+/* --- Responsive Design for small screens --- */
+@media (max-width: 850px) {
+    .header {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px 15px;
+    }
+
+    .logo-title, .header-middle, .nav-links {
+        flex-basis: auto;
+        width: 100%;
+        max-width: none;
+        padding: 5px 0;
+        text-align: center;
+    }
+    
+    .logo-title h1 {
+        font-size: 1.4rem;
+    }
+
+    .nav-links {
+        display: flex;
+        justify-content: space-around;
+        padding-top: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    /* Responsive adjustment for login form */
+    .login-main {
+        min-height: calc(100vh - 100px); 
+    }
+}

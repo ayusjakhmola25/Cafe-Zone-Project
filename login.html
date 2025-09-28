@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafe Zone | Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <header class="login-header">
+        <div class="logo-title">
+            <img src="images/cafelogo.png.jpeg" alt="Cafeteria Logo" class="logo">
+            <h1>FUSION CAFE LOGIN</h1>
+        </div>
+    </header>
+
+    <main class="login-main">
+        <div class="form-container login-form">
+            <h2>User Login</h2>
+            <form onsubmit="return loginUser(event)">
+                <label for="loginEmail">Email ID</label>
+                <input type="email" id="loginEmail" placeholder="Enter your email" required>
+                
+                <label for="loginPassword">Password</label>
+                <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                
+                <button type="submit" class="login-button">Login</button>
+                
+                <p class="register-link-text">Don’t have an account? <a href="register.html">Register Here</a></p>
+            </form>
+        </div>
+    </main>
+
+    <footer class="login-footer">
+        <p>&copy; 2025 FUSION CAFE. Quality You Can Taste.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

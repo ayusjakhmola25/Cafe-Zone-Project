@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - Cafe Zone</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo-title">
+            <img src="images/cafelogo.png.jpeg" alt="Cafeteria Logo" class="logo">
+            <h1> YOUR PROFILE</h1>
+        </div>
+        <nav class="nav-links">
+            <a href="cafeteria.html">Home</a>
+            <a href="#">Menu</a>
+            <a href="profile.html">Profile</a>
+            <a href="login.html" onclick="logout()">Logout</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="profile-container form-container">
+            <h2 class="section-title">My Profile Details</h2>
+            <form id="profileForm" onsubmit="return updateProfile(event)">
+                
+                <label for="profileName">Name:</label>
+                <input type="text" id="profileName" placeholder="Full Name" required>
+
+                <label for="profileMobile">Mobile Number:</label>
+                <input type="tel" id="profileMobile" placeholder="e.g., 9876543210">
+
+                <label for="profileEmail">Email ID:</label>
+                <input type="email" id="profileEmail" placeholder="email@example.com" readonly> 
+
+                <label for="profileDOB">Date of Birth:</label>
+                <input type="date" id="profileDOB">
+
+                <label for="profileGender">Gender:</label>
+                <select id="profileGender">
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <button type="submit" class="update-button">Update Profile</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&#9733; Experience the FUSION CAFE difference. Quality You Can Taste | &copy; 2025 FUSION CAFE</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
