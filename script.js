@@ -1,3 +1,4 @@
+// Existing function: registerUser
 function registerUser(e) {
   e.preventDefault();
   const name = document.getElementById('regName').value;
@@ -7,10 +8,19 @@ function registerUser(e) {
   // Store in localStorage for demo (no real backend)
   localStorage.setItem('user', JSON.stringify({name, email, password}));
   alert('Registration successful! Please login.');
-  window.location.href = 'login.html';
+  
+  // *** MODIFIED: Switch to Login form (slide back) ***
+  showLoginPanel(); 
+  
+  // Optionally clear the register form
+  document.getElementById('regName').value = '';
+  document.getElementById('regEmail').value = '';
+  document.getElementById('regPassword').value = '';
+  
   return false;
 }
 
+// Existing function: loginUser
 function loginUser(e) {
   e.preventDefault();
   const email = document.getElementById('loginEmail').value;
@@ -26,6 +36,7 @@ function loginUser(e) {
   return false;
 }
 
+// Existing function: logout
 function logout() {
   alert('Logged out successfully!');
   // Optionally clear user session
@@ -78,10 +89,40 @@ function updateProfile(e) {
     return false;
 }
 
-// Call loadProfile when the page finishes loading, but only on profile.html
+// --- NEW FORM SWITCHING LOGIC (For Sliding Animation) ---
+
+// Get the main container for animation
+const mainContainer = document.querySelector('.login-main');
+
+// Function to show the Register form (Slides to the left)
+function showRegisterPanel(e) {
+    if (e) e.preventDefault();
+    if (mainContainer) {
+        mainContainer.classList.add('register-active');
+        document.title = 'Cafe Zone | Register'; // Change page title dynamically
+    }
+}
+
+// Function to show the Login form (Slides back to the right)
+function showLoginPanel(e) {
+    if (e) e.preventDefault();
+    if (mainContainer) {
+        mainContainer.classList.remove('register-active');
+        document.title = 'Cafe Zone | Login'; // Change page title dynamically
+    }
+}
+
+
+// Existing DOMContentLoaded logic
 document.addEventListener('DOMContentLoaded', () => {
     // Check the URL to only run loadProfile on the profile page
     if (window.location.pathname.includes('profile.html')) {
         loadProfile();
+    }
+    
+    // NEW: Check if the login page is being loaded and handle URL hash
+    // This allows linking to the register form directly or handling browser back/forward
+    if (window.location.pathname.includes('login.html') && window.location.hash === '#register') {
+        showRegisterPanel();
     }
 });

@@ -9,10 +9,6 @@ body {
 }
 
 /* --- NEW: Dynamic Background for Login/Register Pages --- */
-/* The main body element for login/register pages will adopt this dynamic background,
-   overriding the default static gradient. The HTML files don't have a unique body class, 
-   so we'll apply it to the body and rely on the unique layout. */
-
 @keyframes movingGradient {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -29,6 +25,7 @@ body {
     background-size: 400% 400%;
     animation: movingGradient 30s ease infinite; /* Slow, gentle animation */
 
+    /* Ensure forms are centered initially before animation takes over */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -445,7 +442,7 @@ body {
     background-color: #4682B4;
 }
 
-/* --- LOGIN/REGISTER PAGE STYLES (Existing) --- */
+/* --- LOGIN/REGISTER PAGE STYLES (Includes NEW Animation CSS) --- */
 
 /* Ensures the header bar is visible on the login page */
 .login-header {
@@ -463,15 +460,44 @@ body {
     min-width: unset;
 }
 
-/* Center the form vertically and horizontally on the screen */
-/* NOTE: .login-main has been updated above with the new background animation */
-/* .login-main {
+/* --- NEW: Form Sliding Animation CSS --- */
+
+/* Parent container for both forms - needs overflow hidden to hide the sliding content */
+.login-main.animation-container {
+    overflow: hidden;
+    position: relative;
+    /* Remove default flex alignment from .login-main here, as #formWrapper handles it */
+    display: block; 
+}
+
+/* The actual sliding wrapper that contains both forms */
+#formWrapper {
+    display: flex; /* Aligns login and register forms side-by-side */
+    width: 200%; /* Important: needs double width to hold both forms */
+    height: 100%;
+    /* Main animation transition: cubic-bezier makes it smooth like a video */
+    transition: transform 0.6s cubic-bezier(0.5, 0.05, 0.1, 1); 
+}
+
+/* Base style for individual form panels */
+.form-panel {
+    width: 50%; /* Each panel takes half the 200% width */
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: calc(100vh - 120px); 
-    padding: 20px;
-} */
+    flex-shrink: 0; /* Prevents forms from shrinking */
+}
+
+/* State when Registration form is active */
+.animation-container.register-active #formWrapper {
+    /* Slides the wrapper to the left by 50% to show the Register form */
+    transform: translateX(-50%);
+}
+
+/* --- Existing Login Form Styling --- */
+
+/* NOTE: .login-form style above handles padding/shadow/hover for both forms */
 
 .login-form h2 {
     /* H2 color changed to Dark Blue/Gray */
