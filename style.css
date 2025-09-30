@@ -8,6 +8,53 @@ body {
     min-height: 100vh;
 }
 
+/* --- NEW: Dynamic Background for Login/Register Pages --- */
+/* The main body element for login/register pages will adopt this dynamic background,
+   overriding the default static gradient. The HTML files don't have a unique body class, 
+   so we'll apply it to the body and rely on the unique layout. */
+
+@keyframes movingGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.login-main {
+    /* Apply the main section's height to the background for full effect */
+    min-height: calc(100vh - 120px); 
+    padding: 20px;
+    
+    /* NEW: Dynamic, subtle, slow-moving gradient background for the main area */
+    background: linear-gradient(135deg, #e8f0f5, #dbe4eb, #e8f0f5);
+    background-size: 400% 400%;
+    animation: movingGradient 30s ease infinite; /* Slow, gentle animation */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --- NEW: Form Container Interactive Hover Effect --- */
+.login-form {
+    /* Base Container Style - Used for both Login and Register form containers */
+    max-width: 400px;
+    width: 100%;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+
+    /* Add transition for the hover effect */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.login-form:hover {
+    /* Subtle lift and glow on hover */
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3), 0 0 15px rgba(93, 173, 226, 0.4); /* Soft blue shadow */
+}
+
 /* --- HEADER STYLES (Logo | Search/Filter | Nav Links) --- */
 
 .header {
@@ -398,7 +445,7 @@ body {
     background-color: #4682B4;
 }
 
-/* --- LOGIN/REGISTER PAGE STYLES --- */
+/* --- LOGIN/REGISTER PAGE STYLES (Existing) --- */
 
 /* Ensures the header bar is visible on the login page */
 .login-header {
@@ -417,24 +464,14 @@ body {
 }
 
 /* Center the form vertically and horizontally on the screen */
-.login-main {
+/* NOTE: .login-main has been updated above with the new background animation */
+/* .login-main {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: calc(100vh - 120px); /* Adjust height for header/footer space */
+    min-height: calc(100vh - 120px); 
     padding: 20px;
-}
-
-.login-form {
-    /* Base Container Style - Used for both Login and Register form containers */
-    max-width: 400px;
-    width: 100%;
-    padding: 30px;
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-    text-align: center;
-}
+} */
 
 .login-form h2 {
     /* H2 color changed to Dark Blue/Gray */
