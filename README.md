@@ -11,7 +11,7 @@
 * **Sticky Header:** The main navigation bar remains visible at the top for constant access to search and links.
 * **Dynamic Visuals:** Subtle CSS animations like a spinning logo and a glowing title add a polished, modern touch.
 * **Search & Filters 🔍:** Features a dedicated search input and toggles for viewing **All**, **Vegetarian**, or **Non-Vegetarian** options.
-* **Restaurant Listing:** Displays restaurant cards in a flexible grid layout, complete with ratings and pricing.
+* **Restaurant Listing:** Displays restaurant cards in a flexible grid layout, complete with rating and pricing.
 
 ### User Logic (Client-Side Demo)
 
