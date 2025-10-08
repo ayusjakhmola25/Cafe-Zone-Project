@@ -17,14 +17,14 @@
 
     <main class="login-main">
         <div class="form-container login-form">
-            <h2>User Registration</h2>
+            <h2>User Registration (Mobile OTP)</h2>
             <form onsubmit="return registerUser(event)">
-                <input type="email" id="regEmail" placeholder="Email ID" required>
-                <input type="password" id="regPassword" placeholder="Create Password (Optional for OTP)" style="display:none;"> 
+                <input type="tel" id="regMobile" placeholder="मोबाइल नंबर दर्ज करें" required>
+                <input type="hidden" id="regPassword" value="1234"> 
                 
-                <button type="submit" class="login-button">Register with Email</button>
+                <button type="submit" class="login-button">मोबाइल के साथ रजिस्टर करें</button>
                 
-                <p class="register-link-text">Already have an account? <a href="login.html">Login Here</a></p>
+                <p class="register-link-text">पहले से खाता है? <a href="login.html">यहां Login करें</a></p>
             </form>
         </div>
     </main>
