@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> c83035d69fa602d4480c695cbbb87ddc7ae2de50
 function registerUser(e) {
   e.preventDefault();
   // Removed name field as requested.
@@ -5,6 +9,7 @@ function registerUser(e) {
   // Simulating an OTP-based registration. We'll store a hardcoded '1234' as the password/OTP for demo.
   const otp = '1234'; 
 
+<<<<<<< HEAD
   // Store in localStorage for demo (no real backend). Only email and 'password' (OTP) needed.
   localStorage.setItem('user', JSON.stringify({email, password: otp, name: 'User'})); // Keeping a default 'name' for profile page consistency
   alert(`Registration successful! Your OTP is ${otp}. Please login.`);
@@ -14,6 +19,22 @@ function registerUser(e) {
 
 // Global variable to hold the sent OTP (for a two-step login)
 let sentOtp = ''; 
+=======
+  localStorage.setItem('user', JSON.stringify({name, email, password}));
+  alert('Registration successful! Please login.');
+  
+  
+  showLoginPanel(); 
+  
+
+  document.getElementById('regName').value = '';
+  document.getElementById('regEmail').value = '';
+  document.getElementById('regPassword').value = '';
+  
+  return false;
+}
+
+>>>>>>> c83035d69fa602d4480c695cbbb87ddc7ae2de50
 
 function loginUser(e) {
   e.preventDefault();
@@ -52,30 +73,36 @@ function loginUser(e) {
   return false;
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> c83035d69fa602d4480c695cbbb87ddc7ae2de50
 function logout() {
   alert('Logged out successfully!');
-  // Optionally clear user session
+  
 }
 
+<<<<<<< HEAD
 // The rest of the profile functions (loadProfile, updateProfile) remain unchanged 
 // because they rely on the 'user' and 'profile' objects from localStorage.
 
 // --- NEW PROFILE FUNCTIONS ---
+=======
+>>>>>>> c83035d69fa602d4480c695cbbb87ddc7ae2de50
 
-// Function to load profile data when the profile page opens
 function loadProfile() {
-    // Get primary user data (contains email/password set at registration)
+    
     const user = JSON.parse(localStorage.getItem('user')) || {};
-    // Get extended profile data (stored/updated on profile.html)
+    
     const profile = JSON.parse(localStorage.getItem('profile')) || {};
     
-    // Check if the form elements exist (only on profile.html)
+    
     if (document.getElementById('profileForm')) {
-        // Set values from extended profile, fallback to primary user name
+        
         document.getElementById('profileName').value = profile.name || user.name || '';
         document.getElementById('profileMobile').value = profile.mobile || '';
         
-        // Set email from primary user object (read-only)
+        
         document.getElementById('profileEmail').value = user.email || ''; 
         
         document.getElementById('profileDOB').value = profile.dob || '';
@@ -83,7 +110,7 @@ function loadProfile() {
     }
 }
 
-// Function to handle profile update
+
 function updateProfile(e) {
     e.preventDefault();
 
@@ -96,10 +123,8 @@ function updateProfile(e) {
         gender: document.getElementById('profileGender').value
     };
 
-    // Save the extended profile data
-    localStorage.setItem('profile', JSON.stringify(updatedProfileData));
     
-    // Update the name in the primary user object too, for display consistency
+    localStorage.setItem('profile', JSON.stringify(updatedProfileData));
     primaryUser.name = updatedProfileData.name;
     localStorage.setItem('user', JSON.stringify(primaryUser));
 
@@ -107,10 +132,43 @@ function updateProfile(e) {
     return false;
 }
 
+<<<<<<< HEAD
 // Call loadProfile when the page finishes loading, but only on profile.html
+=======
+
+const mainContainer = document.querySelector('.login-main');
+
+function showRegisterPanel(e) {
+    if (e) e.preventDefault();
+    if (mainContainer) {
+        mainContainer.classList.add('register-active');
+        document.title = 'Cafe Zone | Register'; 
+    }
+}
+
+
+function showLoginPanel(e) {
+    if (e) e.preventDefault();
+    if (mainContainer) {
+        mainContainer.classList.remove('register-active');
+        document.title = 'Cafe Zone | Login'; 
+    }
+}
+
+
+
+>>>>>>> c83035d69fa602d4480c695cbbb87ddc7ae2de50
 document.addEventListener('DOMContentLoaded', () => {
-    // Check the URL to only run loadProfile on the profile page
+   
     if (window.location.pathname.includes('profile.html')) {
         loadProfile();
     }
+<<<<<<< HEAD
+=======
+    
+  
+    if (window.location.pathname.includes('login.html') && window.location.hash === '#register') {
+        showRegisterPanel();
+    }
+>>>>>>> c83035d69fa602d4480c695cbbb87ddc7ae2de50
 });
