@@ -19,11 +19,10 @@
         <div class="form-container login-form">
             <h2>User Registration</h2>
             <form onsubmit="return registerUser(event)">
-                <input type="text" id="regName" placeholder="Full Name" required>
                 <input type="email" id="regEmail" placeholder="Email ID" required>
-                <input type="password" id="regPassword" placeholder="Create Password" required>
+                <input type="password" id="regPassword" placeholder="Create Password (Optional for OTP)" style="display:none;"> 
                 
-                <button type="submit" class="login-button">Register Account</button>
+                <button type="submit" class="login-button">Register with Email</button>
                 
                 <p class="register-link-text">Already have an account? <a href="login.html">Login Here</a></p>
             </form>

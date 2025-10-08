@@ -1,46 +1,64 @@
-// Existing function: registerUser
 function registerUser(e) {
   e.preventDefault();
-  const name = document.getElementById('regName').value;
+  // Removed name field as requested.
   const email = document.getElementById('regEmail').value;
-  const password = document.getElementById('regPassword').value;
+  // Simulating an OTP-based registration. We'll store a hardcoded '1234' as the password/OTP for demo.
+  const otp = '1234'; 
 
-  // Store in localStorage for demo (no real backend)
-  localStorage.setItem('user', JSON.stringify({name, email, password}));
-  alert('Registration successful! Please login.');
-  
-  // *** MODIFIED: Switch to Login form (slide back) ***
-  showLoginPanel(); 
-  
-  // Optionally clear the register form
-  document.getElementById('regName').value = '';
-  document.getElementById('regEmail').value = '';
-  document.getElementById('regPassword').value = '';
-  
+  // Store in localStorage for demo (no real backend). Only email and 'password' (OTP) needed.
+  localStorage.setItem('user', JSON.stringify({email, password: otp, name: 'User'})); // Keeping a default 'name' for profile page consistency
+  alert(`Registration successful! Your OTP is ${otp}. Please login.`);
+  window.location.href = 'login.html';
   return false;
 }
 
-// Existing function: loginUser
+// Global variable to hold the sent OTP (for a two-step login)
+let sentOtp = ''; 
+
 function loginUser(e) {
   e.preventDefault();
   const email = document.getElementById('loginEmail').value;
-  const password = document.getElementById('loginPassword').value;
-
+  const otpInput = document.getElementById('loginPassword'); // Using the password field as the OTP input
+  
   const user = JSON.parse(localStorage.getItem('user'));
-  if(user && user.email === email && user.password === password) {
+
+  // --- STEP 1: Simulate sending OTP if OTP field is empty ---
+  if (!otpInput.value) {
+      if(user && user.email === email) {
+          // Simulate sending a new OTP (using the stored password/OTP)
+          sentOtp = user.password;
+          alert(`OTP sent to ${email}! Check alert for the OTP: ${sentOtp}`);
+          
+          // Change input type and placeholder to reflect OTP
+          otpInput.placeholder = 'Enter OTP';
+          otpInput.type = 'text';
+          otpInput.style.display = 'block'; // Ensure the OTP field is visible
+          document.getElementById('otp-prompt').style.display = 'none'; // Hide the link to resend/register
+          document.querySelector('.login-button').textContent = 'Verify OTP & Login';
+      } else {
+          alert('User not registered or Invalid Email ID!');
+      }
+      return false; // Prevent form submission and stay on the page
+  }
+  
+  // --- STEP 2: Verify OTP ---
+  const enteredOtp = otpInput.value;
+  if(user && user.email === email && user.password === enteredOtp) {
     alert('Login successful!');
     window.location.href = 'cafeteria.html';
   } else {
-    alert('Invalid credentials!');
+    alert('Invalid OTP or Email ID!');
   }
   return false;
 }
 
-// Existing function: logout
 function logout() {
   alert('Logged out successfully!');
   // Optionally clear user session
 }
+
+// The rest of the profile functions (loadProfile, updateProfile) remain unchanged 
+// because they rely on the 'user' and 'profile' objects from localStorage.
 
 // --- NEW PROFILE FUNCTIONS ---
 
@@ -89,40 +107,10 @@ function updateProfile(e) {
     return false;
 }
 
-// --- NEW FORM SWITCHING LOGIC (For Sliding Animation) ---
-
-// Get the main container for animation
-const mainContainer = document.querySelector('.login-main');
-
-// Function to show the Register form (Slides to the left)
-function showRegisterPanel(e) {
-    if (e) e.preventDefault();
-    if (mainContainer) {
-        mainContainer.classList.add('register-active');
-        document.title = 'Cafe Zone | Register'; // Change page title dynamically
-    }
-}
-
-// Function to show the Login form (Slides back to the right)
-function showLoginPanel(e) {
-    if (e) e.preventDefault();
-    if (mainContainer) {
-        mainContainer.classList.remove('register-active');
-        document.title = 'Cafe Zone | Login'; // Change page title dynamically
-    }
-}
-
-
-// Existing DOMContentLoaded logic
+// Call loadProfile when the page finishes loading, but only on profile.html
 document.addEventListener('DOMContentLoaded', () => {
     // Check the URL to only run loadProfile on the profile page
     if (window.location.pathname.includes('profile.html')) {
         loadProfile();
-    }
-    
-    // NEW: Check if the login page is being loaded and handle URL hash
-    // This allows linking to the register form directly or handling browser back/forward
-    if (window.location.pathname.includes('login.html') && window.location.hash === '#register') {
-        showRegisterPanel();
     }
 });
