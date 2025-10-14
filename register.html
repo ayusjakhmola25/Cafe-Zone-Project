@@ -18,18 +18,18 @@
     <main class="login-main">
         <div class="form-container login-form">
             <h2>User Registration (Mobile OTP)</h2>
-            <form onsubmit="return registerUser(event)">
-                <input type="tel" id="regMobile" placeholder="मोबाइल नंबर दर्ज करें" required>
+            <form onsubmit="return registerUser(event)" autocomplete="off">
+                <input type="text" id="regMobile" placeholder="Enter Mobile Number" required autocomplete="username">
                 <input type="hidden" id="regPassword" value="1234"> 
                 
-                <button type="submit" class="login-button">मोबाइल के साथ रजिस्टर करें</button>
+                <button type="submit" class="login-button">Register with Mobile</button>
                 
-                <p class="register-link-text">पहले से खाता है? <a href="login.html">यहां Login करें</a></p>
+                <p class="register-link-text">Already have an account? <a href="login.html">Login Here</a></p>
             </form>
         </div>
     </main>
 
-    <footer class="login-footer">
+    <footer>
         <p>&copy; 2025 FUSION CAFE. Quality You Can Taste.</p>
     </footer>
 

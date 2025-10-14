@@ -23,13 +23,13 @@
     <main>
         <div class="profile-container form-container">
             <h2 class="section-title">My Profile Details</h2>
-            <form id="profileForm" onsubmit="return updateProfile(event)">
+            <form id="profileForm" onsubmit="return updateProfile(event)" autocomplete="off">
                 
                 <label for="profileName">Name:</label>
                 <input type="text" id="profileName" placeholder="Full Name" required>
 
                 <label for="profileMobile">Mobile Number:</label>
-                <input type="tel" id="profileMobile" placeholder="e.g., 9876543210" readonly>
+                <input type="text" id="profileMobile" placeholder="e.g., 9876543210" readonly>
 
                 <label for="profileEmail">Email ID:</label>
                 <input type="email" id="profileEmail" placeholder="email@example.com"> 

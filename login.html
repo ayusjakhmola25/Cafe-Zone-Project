@@ -1,65 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cafe Zone | Login</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
+    
     <header class="login-header">
         <div class="logo-title">
             <img src="images/cafelogo.png.jpeg" alt="Cafeteria Logo" class="logo">
-            <h1>FUSION CAFE</h1>
+            <h1>FUSION CAFE LOGIN (OTP)</h1>
         </div>
     </header>
 
-    <main class="login-main animation-container" id="mainContainer">
-
-        <div id="formWrapper">
-            <div class="form-panel login-panel">
-                <div class="form-container login-form">
-                    <h2>User Login</h2>
-                    <form onsubmit="return loginUser(event)">
-                        <label for="loginEmail">Email ID</label>
-                        <input type="email" id="loginEmail" placeholder="Enter your email" required>
-
-                        <label for="loginPassword">Password</label>
-                        <input type="password" id="loginPassword" placeholder="Enter your password" required>
-
-                        <button type="submit" class="login-button">Login</button>
-
-                        <p class="register-link-text">Don’t have an account? <a href="#"
-                                onclick="showRegisterPanel(event)">Register Here</a></p>
-                    </form>
-                </div>
-            </div>
-            <div class="form-panel register-panel">
-                <div class="form-container login-form">
-                    <h2>User Registration</h2>
-                    <form onsubmit="return registerUser(event)">
-                        <input type="text" id="regName" placeholder="Full Name" required>
-                        <input type="email" id="regEmail" placeholder="Email ID" required>
-                        <input type="password" id="regPassword" placeholder="Create Password" required>
-
-                        <button type="submit" class="login-button">Register Account</button>
-
-                        <p class="register-link-text">Already have an account? <a href="#"
-                                onclick="showLoginPanel(event)">Login Here</a></p>
-                    </form>
-                </div>
-            </div>
+    <main class="login-main">
+        <div class="form-container login-form">
+            <h2>User Login (Mobile OTP Flow)</h2>
+            <form onsubmit="return loginUser(event)" autocomplete="off">
+                
+                <label for="loginMobile">Mobile Number</label>
+                <input type="text" id="loginMobile" placeholder="Enter your mobile number" required autocomplete="username">
+                
+                <label for="loginPassword" id="otp-label" style="display:none;">OTP</label>
+                <input type="text" id="loginPassword" placeholder="Enter OTP" style="display:none;" autocomplete="new-password"> 
+                
+                <button type="submit" class="login-button">Send OTP</button>
+                
+                <p class="register-link-text" id="otp-prompt">Don't have an account? <a href="register.html">Register Here</a></p>
+            </form>
         </div>
     </main>
 
-    <footer class="login-footer">
+    <footer>
         <p>&copy; 2025 FUSION CAFE. Quality You Can Taste.</p>
     </footer>
 
     <script src="script.js"></script>
 </body>
-
 </html>
