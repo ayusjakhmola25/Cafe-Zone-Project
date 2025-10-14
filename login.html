@@ -15,6 +15,7 @@
         </div>
     </header>
 
+<<<<<<< HEAD
     <main class="login-main">
         <div class="form-container login-form">
             <h2>User Login (Mobile OTP Flow)</h2>
@@ -30,6 +31,41 @@
                 
                 <p class="register-link-text" id="otp-prompt">Don't have an account? <a href="register.html">Register Here</a></p>
             </form>
+=======
+    <main class="login-main animation-container" id="mainContainer">
+        
+        <div id="formWrapper">            
+            <div class="form-panel login-panel">
+                <div class="form-container login-form">
+                    <h2>User Login</h2>
+                    <form onsubmit="return loginUser(event)">
+                        <label for="loginEmail">Email ID</label>
+                        <input type="email" id="loginEmail" placeholder="Enter your email" required>
+                        
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                        
+                        <button type="submit" class="login-button">Login</button>
+                        
+                        <p class="register-link-text">Don’t have an account? <a href="#" onclick="showRegisterPanel(event)">Register Here</a></p>
+                    </form>
+                </div>
+            </div>
+                        <div class="form-panel register-panel">
+                <div class="form-container login-form">
+                    <h2>User Registration</h2>
+                    <form onsubmit="return registerUser(event)">
+                        <input type="text" id="regName" placeholder="Full Name" required>
+                        <input type="email" id="regEmail" placeholder="Email ID" required>
+                        <input type="password" id="regPassword" placeholder="Create Password" required>
+                        
+                        <button type="submit" class="login-button">Register Account</button>
+                        
+                        <p class="register-link-text">Already have an account? <a href="#" onclick="showLoginPanel(event)">Login Here</a></p>
+                    </form>
+                </div>
+            </div>
+>>>>>>> b63022879075f528ee52932b9fffe5cd6038a28a
         </div>
     </main>
 
@@ -39,4 +75,8 @@
 
     <script src="script.js"></script>
 </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> b63022879075f528ee52932b9fffe5cd6038a28a

@@ -1,5 +1,7 @@
+
 function registerUser(e) {
   e.preventDefault();
+<<<<<<< HEAD
   // Mobile is the new primary key. OTP is hardcoded as '1234'.
   const mobile = document.getElementById('regMobile').value;
   const otp = '1234'; 
@@ -8,11 +10,30 @@ function registerUser(e) {
   localStorage.setItem('user', JSON.stringify({mobile, password: otp, name: 'User'})); 
   alert(`Registration successful! Your OTP is: ${otp}. Please login using your Mobile Number.`);
   window.location.href = 'login.html';
+=======
+  const name = document.getElementById('regName').value;
+  const email = document.getElementById('regEmail').value;
+  const password = document.getElementById('regPassword').value;
+
+  localStorage.setItem('user', JSON.stringify({name, email, password}));
+  alert('Registration successful! Please login.');
+  
+  
+  showLoginPanel(); 
+  
+
+  document.getElementById('regName').value = '';
+  document.getElementById('regEmail').value = '';
+  document.getElementById('regPassword').value = '';
+  
+>>>>>>> b63022879075f528ee52932b9fffe5cd6038a28a
   return false;
 }
 
+
 function loginUser(e) {
   e.preventDefault();
+<<<<<<< HEAD
   // Get input elements
   const mobileInput = document.getElementById('loginMobile');
   const mobile = mobileInput.value;
@@ -59,22 +80,44 @@ function loginUser(e) {
     otpLabel.style.display = 'none';
     loginButton.textContent = 'Send OTP';
     promptText.style.display = 'block';
+=======
+  const email = document.getElementById('loginEmail').value;
+  const password = document.getElementById('loginPassword').value;
+
+  const user = JSON.parse(localStorage.getItem('user'));
+  if(user && user.email === email && user.password === password) {
+    alert('Login successful!');
+    window.location.href = 'cafeteria.html';
+  } else {
+    alert('Invalid credentials!');
+>>>>>>> b63022879075f528ee52932b9fffe5cd6038a28a
   }
   return false;
 }
 
+
 function logout() {
   alert('Logged out successfully!');
+<<<<<<< HEAD
   // localStorage.removeItem('user'); // Optional: uncomment this to clear session on logout
 }
 
 // --- PROFILE FUNCTIONS ---
+=======
+  
+}
+
+>>>>>>> b63022879075f528ee52932b9fffe5cd6038a28a
 
 function loadProfile() {
+    
     const user = JSON.parse(localStorage.getItem('user')) || {};
+    
     const profile = JSON.parse(localStorage.getItem('profile')) || {};
     
+    
     if (document.getElementById('profileForm')) {
+<<<<<<< HEAD
         // Load Name from profile or default user object
         document.getElementById('profileName').value = profile.name || user.name || '';
         
@@ -84,27 +127,44 @@ function loadProfile() {
         
         // Load other details
         document.getElementById('profileEmail').value = profile.email || ''; 
+=======
+        
+        document.getElementById('profileName').value = profile.name || user.name || '';
+        document.getElementById('profileMobile').value = profile.mobile || '';
+        
+        
+        document.getElementById('profileEmail').value = user.email || ''; 
+        
+>>>>>>> b63022879075f528ee52932b9fffe5cd6038a28a
         document.getElementById('profileDOB').value = profile.dob || '';
         document.getElementById('profileGender').value = profile.gender || '';
     }
 }
 
+
 function updateProfile(e) {
     e.preventDefault();
 
     const primaryUser = JSON.parse(localStorage.getItem('user')) || {};
-    
+
     const updatedProfileData = {
         name: document.getElementById('profileName').value,
+<<<<<<< HEAD
         mobile: document.getElementById('profileMobile').value, // Mobile is read-only, we just save it
         email: document.getElementById('profileEmail').value, 
+=======
+        mobile: document.getElementById('profileMobile').value,
+>>>>>>> b63022879075f528ee52932b9fffe5cd6038a28a
         dob: document.getElementById('profileDOB').value,
         gender: document.getElementById('profileGender').value
     };
 
-    localStorage.setItem('profile', JSON.stringify(updatedProfileData));
     
+<<<<<<< HEAD
     // Update name in primary user object
+=======
+    localStorage.setItem('profile', JSON.stringify(updatedProfileData));
+>>>>>>> b63022879075f528ee52932b9fffe5cd6038a28a
     primaryUser.name = updatedProfileData.name;
     localStorage.setItem('user', JSON.stringify(primaryUser));
 
@@ -112,8 +172,36 @@ function updateProfile(e) {
     return false;
 }
 
+
+const mainContainer = document.querySelector('.login-main');
+
+function showRegisterPanel(e) {
+    if (e) e.preventDefault();
+    if (mainContainer) {
+        mainContainer.classList.add('register-active');
+        document.title = 'Cafe Zone | Register'; 
+    }
+}
+
+
+function showLoginPanel(e) {
+    if (e) e.preventDefault();
+    if (mainContainer) {
+        mainContainer.classList.remove('register-active');
+        document.title = 'Cafe Zone | Login'; 
+    }
+}
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
+   
     if (window.location.pathname.includes('profile.html')) {
         loadProfile();
+    }
+    
+  
+    if (window.location.pathname.includes('login.html') && window.location.hash === '#register') {
+        showRegisterPanel();
     }
 });
