@@ -1,13 +1,13 @@
-// --- OTP LOGIN LOGIC ---
+
 
 document.addEventListener('DOMContentLoaded', () => {
-    // यह कोड सिर्फ लॉगिन पेज पर चलेगा
+    
     const loginBtn = document.getElementById('loginBtn');
     if (loginBtn) {
         loginBtn.addEventListener('click', handleLoginFlow);
     }
 
-    // यह कोड सिर्फ प्रोफाइल पेज पर चलेगा
+    
     if (window.location.pathname.includes('profile.html')) {
         loadProfile();
     }
@@ -22,7 +22,6 @@ let currentOTP = null; // Store the generated OTP
  * @returns {string} The 5-digit OTP as a string.
  */
 function generateRandomOTP() {
-    // यह फ़ंक्शन 10000 से 99999 के बीच एक यादृच्छिक (random) 5-अंकीय संख्या बनाता है।
     return Math.floor(10000 + Math.random() * 90000).toString();
 }
 
