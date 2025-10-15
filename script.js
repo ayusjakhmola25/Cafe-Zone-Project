@@ -26,6 +26,22 @@ function generateRandomOTP() {
     return Math.floor(10000 + Math.random() * 90000).toString();
 }
 
+/**
+ * Checks if the given mobile number is registered.
+ * In a real app, this would be an API call to the server.
+ * @param {string} mobileNumber - The 10-digit mobile number to check.
+ * @returns {boolean} True if registered, false otherwise.
+ */
+function isMobileRegistered(mobileNumber) {
+    const user = JSON.parse(localStorage.getItem('user')) || {};
+    // Check if the saved user data has the mobile number field, and it matches the entered number
+    // NOTE: This simple check works for only ONE registered user in localStorage.
+    // For a real application, 'users' would be an array of objects.
+    
+    // For this demo (which saves only one user):
+    return user.mobile === mobileNumber;
+}
+
 
 function handleLoginFlow(e) {
     e.preventDefault(); // पेज को रीलोड होने से रोकता है
@@ -43,10 +59,16 @@ function handleLoginFlow(e) {
             return;
         }
 
+        // 🎯 NEW CHECK: Check if the mobile number is registered
+        if (!isMobileRegistered(mobileNumber)) {
+            alert('Invalid Mobile Number! This number is not registered. Please register first.');
+            return; // Stop the flow
+        }
+        
         // Generate the 5-digit random OTP
         currentOTP = generateRandomOTP(); 
         
-        // OTP अलर्ट में दिखाएं (Your requested feature)
+        // OTP अलर्ट में दिखाएं
         alert(`OTP sent to ${mobileNumber}. \n\nFor this demo, your **5-digit** OTP is: ${currentOTP}`);
 
         // OTP फील्ड दिखाएं
@@ -83,6 +105,7 @@ function registerUser(e) {
   const password = document.getElementById('regPassword').value;
 
   // Save Name, Email, Mobile, and Password
+  // NOTE: This overwrites the previous user. For a multi-user demo, you would use an array.
   localStorage.setItem('user', JSON.stringify({name, email, mobile, password}));
   alert('Registration successful! Please login.');
   window.location.href = 'login.html';
