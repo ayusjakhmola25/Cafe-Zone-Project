@@ -1,14 +1,14 @@
-/* Reset & Base */
+/* Reset & Base - Updated Font to a more modern sans-serif stack */
 body {
-    font-family: 'Segoe UI', Arial, sans-serif;
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif; /* Poppins for a modern look */
     margin: 0;
     padding: 0;
-    /* Keeping light background with a subtle light blue gradient */
-    background: linear-gradient(135deg, #f9f9f9 0%, #e8f0f5 100%);
+    /* Clean, soft background */
+    background: #ECF0F1; /* Soft Gray/Silver background */
     min-height: 100vh;
 }
 
-/* --- NEW: Dynamic Background for Login/Register Pages --- */
+/* --- Dynamic Background for Login/Register Pages (Kept, but refined colors) --- */
 @keyframes movingGradient {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -16,40 +16,37 @@ body {
 }
 
 .login-main {
-    /* Apply the main section's height to the background for full effect */
     min-height: calc(100vh - 120px); 
     padding: 20px;
     
-    /* NEW: Dynamic, subtle, slow-moving gradient background for the main area */
-    background: linear-gradient(135deg, #e8f0f5, #dbe4eb, #e8f0f5);
+    /* Dynamic Gradient - Deep Blue/Gray theme */
+    background: linear-gradient(135deg, #ECF0F1, #BDC3C7, #ECF0F1);
     background-size: 400% 400%;
-    animation: movingGradient 30s ease infinite; /* Slow, gentle animation */
+    animation: movingGradient 30s ease infinite; 
 
-    /* Ensure forms are centered initially before animation takes over */
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* --- NEW: Form Container Interactive Hover Effect --- */
+/* --- Form Container Interactive Hover Effect (More pronounced effect) --- */
 .login-form {
-    /* Base Container Style - Used for both Login and Register form containers */
     max-width: 400px;
     width: 100%;
-    padding: 30px;
+    padding: 35px;
     background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    border-radius: 15px; /* Slightly more rounded */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Softer shadow */
     text-align: center;
+    border: 1px solid #D5DBDB; /* Subtle border for definition */
 
-    /* Add transition for the hover effect */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease; 
 }
 
 .login-form:hover {
-    /* Subtle lift and glow on hover */
-    transform: translateY(-3px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3), 0 0 15px rgba(93, 173, 226, 0.4); /* Soft blue shadow */
+    transform: translateY(-8px); /* Higher lift */
+    /* Vibrant shadow glow (Electric Blue) */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2), 0 0 25px rgba(52, 152, 219, 0.6); 
 }
 
 /* --- HEADER STYLES (Logo | Search/Filter | Nav Links) --- */
@@ -58,11 +55,11 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* Soft Blue Gradient for Header */
-    background: linear-gradient(90deg, #A9CCE3, #5DADE2);
-    padding: 10px 20px;
+    /* Deep Blue/Midnight Gradient */
+    background: linear-gradient(90deg, #2C3E50, #34495E); 
+    padding: 15px 30px; /* Increased padding */
     color: #fff;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
     position: sticky;
     top: 0;
     z-index: 10;
@@ -73,17 +70,18 @@ body {
     display: flex;
     align-items: center;
     flex-basis: 25%;
-    min-width: 180px;
+    min-width: 200px;
 }
 
 .logo {
-    width: 55px;
-    height: 55px;
+    width: 60px; /* Slightly larger */
+    height: 60px;
     object-fit: cover;
-    margin-right: 12px;
+    margin-right: 15px;
     border-radius: 50%;
+    border: 4px solid #3498DB; /* Electric Blue Border */
     background: #fff;
-    animation: logoSpin 4s linear infinite;
+    animation: logoSpin 5s linear infinite, logoPulse 2s infinite alternate; /* Added pulse */
 }
 
 @keyframes logoSpin {
@@ -91,23 +89,28 @@ body {
     100% {transform: rotate(360deg);}
 }
 
-/* --- ANIMATION KEYFRAMES FOR TITLE (Blue Glow) --- */
+@keyframes logoPulse {
+    0% {box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.7);}
+    100% {box-shadow: 0 0 0 10px rgba(52, 152, 219, 0);}
+}
+
+/* --- ANIMATION KEYFRAMES FOR TITLE (Electric Blue Glow) --- */
 @keyframes titleGlow {
     0%, 100% {
         text-shadow: 0 0 5px rgba(255, 255, 255, 0.4), 0 0 10px rgba(255, 255, 255, 0.2);
     }
     50% {
-        /* Title Glow color changed to soft blue */
-        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #5DADE2; 
+        text-shadow: 0 0 15px #fff, 0 0 30px #3498DB; /* Electric Blue Glow */
     }
 }
 /* ------------------------------------------- */
 
 .logo-title h1 {
-    font-size: 1.6rem;
+    font-size: 1.8rem; /* Larger title */
     margin: 0;
-    font-weight: 700;
-    animation: titleGlow 3s ease-in-out infinite alternate;
+    font-weight: 800; /* Bolder */
+    text-transform: uppercase;
+    animation: titleGlow 4s ease-in-out infinite alternate;
 }
 
 /* Center Controls (Search and Filters) */
@@ -116,107 +119,121 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 6px;
-    padding: 0 15px;
-    max-width: 650px; 
+    gap: 8px;
+    padding: 0 20px;
+    max-width: 700px; 
 }
 
 .search-panel {
     display: flex;
     width: 100%;
-    background-color: white; 
-    border-radius: 8px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
-    padding: 5px 15px;
+    background-color: #f7f7f7; /* Off-white search bar */
+    border-radius: 25px; /* Pill shape */
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+    padding: 8px 20px;
     align-items: center;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.search-panel:focus-within {
+    border: 2px solid #3498DB; /* Electric Blue border on focus */
+    background-color: #ffffff;
 }
 
 .search-input {
     flex-grow: 1;
     border: none;
-    font-size: 0.95rem;
-    padding: 3px 0;
+    font-size: 1rem;
+    padding: 0;
     outline: none;
+    background-color: transparent;
+    color: #333;
 }
 
 .mic-icon {
-    /* Changed from green to soft blue */
-    color: #5DADE2; 
-    font-size: 1.1rem;
-    margin-left: 10px;
+    color: #3498DB; /* Electric Blue */
+    font-size: 1.3rem;
+    margin-left: 15px;
     cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.mic-icon:hover {
+    transform: scale(1.1);
 }
 
 .veg-nonveg-toggle {
-    /* Changed from dark green to soft blue */
-    background-color: #5DADE2; 
-    border-radius: 18px;
-    padding: 3px;
-    box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+    background-color: #3498DB; /* Electric Blue background */
+    border-radius: 25px;
+    padding: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
 
 .toggle-button {
     border: none;
-    padding: 6px 12px;
-    border-radius: 15px;
+    padding: 8px 16px; /* Increased padding */
+    border-radius: 20px;
     cursor: pointer;
-    font-weight: 500;
-    font-size: 0.85rem;
+    font-weight: 600;
+    font-size: 0.9rem;
     background-color: transparent;
     color: #fff; 
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .toggle-button.active {
     background-color: #ffffff; 
-    /* Active color changed to soft blue */
-    color: #5DADE2; 
-    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    color: #2C3E50; /* Dark Blue active text */
+    box-shadow: 0 1px 5px rgba(0,0,0,0.3);
+    transform: scale(1.05);
 }
 
 .nav-links {
     flex-basis: 20%; 
     text-align: right;
-    min-width: 150px;
+    min-width: 180px;
 }
 
 .nav-links a {
     color: white;
-    margin-left: 20px;
+    margin-left: 25px; /* Increased spacing */
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 600;
     position: relative;
     transition: color 0.3s ease;
+    text-transform: uppercase;
 }
 
 .nav-links a::after {
     content: "";
     position: absolute;
     width: 0;
-    height: 2px;
-    bottom: -4px;
+    height: 3px; /* Thicker underline */
+    bottom: -6px;
     left: 0;
-    background-color: white;
-    transition: width 0.3s;
+    background-color: #3498DB; /* Electric Blue underline */
+    transition: width 0.4s ease-out;
 }
 
 .nav-links a:hover {
-    color: #c8e6c9;
+    color: #ECF0F1;
 }
 
 .nav-links a:hover::after {
     width: 100%;
 }
 
-/* --- CATEGORY FILTER (Centered Images) --- */
+/* --- CATEGORY FILTER (Vibrant Images with Depth) --- */
 .category-filters-container {
     display: flex;
-    justify-content: center; /* Centering the items */
-    padding: 15px 20px;
-    gap: 25px; 
-    max-width: 1100px;
+    justify-content: center; 
+    padding: 25px 30px; /* More vertical padding */
+    gap: 30px; /* Wider gap */
+    max-width: 1200px;
     margin: 0 auto;
-    border-bottom: 1px solid #eee;
+    border-bottom: 2px solid #D5DBDB;
+    background-color: #fff; /* White strip for categories */
 }
 
 .category-item {
@@ -226,77 +243,91 @@ body {
     text-align: center;
     cursor: pointer;
     flex-shrink: 0; 
-    transition: transform 0.2s;
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.3s;
 }
 
 .category-item:hover {
-    transform: scale(1.05);
+    transform: scale(1.15); /* More prominent scale */
+    opacity: 0.9;
 }
 
 .category-image {
-    width: 70px; 
-    height: 70px;
+    width: 80px; /* Larger images */
+    height: 80px;
     border-radius: 50%; 
     object-fit: cover; 
-    border: 3px solid #fff; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); 
+    border: 4px solid #ffffff; 
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); 
+    filter: saturate(1.1); /* Slight saturation boost */
 }
 
 .category-name {
-    margin-top: 8px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: #333;
+    margin-top: 10px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #2C3E50; /* Dark Blue text */
+    text-transform: uppercase;
 }
 
 /* --- MAIN CONTENT STYLES --- */
 .section-title {
     text-align: center;
-    margin: 25px 0 15px 0;
-    /* Section title color changed to Dark Blue/Gray */
-    color: #34495E; 
-    font-size: 2rem;
-    font-weight: bold;
+    margin: 40px 0 20px 0; /* More spacing */
+    color: #2C3E50; /* Deep Blue title */
+    font-size: 2.2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
     animation: fadeIn 1.5s ease;
 }
 
+.section-title::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 4px;
+    background-color: #3498DB; /* Electric Blue accent line */
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
 @keyframes fadeIn {
-    from {opacity: 0; transform: translateY(-20px);}
+    from {opacity: 0; transform: translateY(-30px);}
     to {opacity: 1; transform: translateY(0);}
 }
 
 .menu-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 20px;
-    padding: 0 20px 40px;
-    max-width: 1100px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Larger minimum size */
+    gap: 30px; /* Wider gap */
+    padding: 0 30px 60px;
+    max-width: 1200px;
     margin: 0 auto;
     animation: fadeIn 2s ease;
 }
 
-/* Restaurant Card Styling */
+/* Restaurant Card Styling (Sleeker and more impactful) */
 .menu-item.menu-card {
     background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     overflow: hidden;
     text-align: left;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    padding: 0;
-    font-weight: normal;
-    color: #333;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border 0.4s ease;
+    border: 3px solid transparent;
+    cursor: pointer;
 }
 
 .menu-item.menu-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-    background: #ffffff;
+    transform: translateY(-10px) scale(1.02); /* More dynamic lift */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+    border: 3px solid #3498DB; /* Electric Blue border on hover */
 }
 
 .image-block {
     width: 100%;
-    height: 140px; 
+    height: 160px; /* Taller image block */
     overflow: hidden;
 }
 
@@ -304,94 +335,93 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .menu-item.menu-card:hover .item-image {
-    transform: scale(1.05);
+    transform: scale(1.1); /* Zoom effect */
 }
 
 .item-details {
-    padding: 10px 12px;
+    padding: 15px 18px; /* More padding */
 }
 
 .title-rating {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
 }
 
 .item-title {
-    font-size: 1.1rem;
-    font-weight: 700;
-    /* Item title color changed to Dark Blue/Gray */
-    color: #34495E; 
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #2C3E50; /* Deep Blue title */
     margin: 0;
     flex-grow: 1;
     padding-right: 5px;
+    text-transform: capitalize;
 }
 
 .item-rating {
-    /* Rating background changed to soft blue */
-    background-color: #5DADE2; 
+    background-color: #2ECC71; /* A refreshing Green for rating */
     color: white;
-    padding: 3px 6px;
-    border-radius: 4px;
-    font-weight: 600;
-    font-size: 0.85rem;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 1rem;
     display: flex;
     align-items: center;
-    gap: 3px;
+    gap: 4px;
     flex-shrink: 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 .star-icon {
-    color: white; 
-    font-size: 0.9rem;
+    color: #F1C40F; /* Gold star */
+    font-size: 1rem;
     line-height: 1;
 }
 
 .item-description {
-    font-size: 0.85rem;
-    color: #666;
-    margin: 0 0 8px 0;
+    font-size: 0.9rem;
+    color: #7F8C8D; /* Soft gray description */
+    margin: 0 0 10px 0;
+    font-style: italic;
 }
 
 .item-price {
-    font-size: 1rem;
-    font-weight: 700;
-    /* Price color changed to soft blue */
-    color: #5DADE2;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #3498DB; /* Electric Blue price */
+    text-transform: uppercase;
 }
 
-/* --- NEW PROFILE FORM STYLES --- */
+/* --- NEW PROFILE FORM STYLES (Clean and Structured) --- */
 
 .profile-container {
-    max-width: 500px;
-    margin: 40px auto;
-    padding: 30px;
+    max-width: 550px;
+    margin: 50px auto;
+    padding: 40px;
     background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid #3498DB; /* Left accent line */
 }
 
 .profile-container h2 {
-    /* Profile H2 color changed to Dark Blue/Gray */
-    color: #34495E;
-    margin-bottom: 25px;
-}
-
-.profile-container form {
-    display: flex;
-    flex-direction: column;
+    color: #2C3E50;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    font-weight: 800;
+    text-transform: uppercase;
 }
 
 .profile-container label {
-    font-weight: 600;
-    color: #555;
-    margin-top: 15px;
-    margin-bottom: 5px;
+    font-weight: 700;
+    color: #34495E;
+    margin-top: 20px;
+    margin-bottom: 8px;
 }
 
 .profile-container input[type="text"],
@@ -399,231 +429,165 @@ body {
 .profile-container input[type="email"],
 .profile-container input[type="date"],
 .profile-container select {
-    padding: 12px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
+    padding: 14px; /* Increased size */
+    margin-bottom: 18px;
+    border: 2px solid #D5DBDB;
+    border-radius: 8px;
     font-size: 1rem;
-    width: 100%;
     box-sizing: border-box; 
-    transition: border-color 0.3s;
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .profile-container input:focus,
 .profile-container select:focus {
-    /* Focus border changed to soft blue */
-    border-color: #5DADE2;
+    border-color: #3498DB; /* Electric Blue border on focus */
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
     outline: none;
 }
 
-/* Style for the non-editable email field */
 .profile-container input[readonly] {
-    background-color: #f5f5f5;
+    background-color: #F7F9F9;
     color: #777;
     cursor: default;
+    border-style: dashed;
 }
 
 .update-button {
-    /* Button color changed to soft blue */
-    background-color: #5DADE2;
+    background-color: #3498DB; /* Electric Blue */
     color: white;
-    padding: 12px 20px;
+    padding: 14px 25px;
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
     cursor: pointer;
-    font-size: 1.1rem;
-    font-weight: 700;
-    margin-top: 20px;
-    transition: background-color 0.3s ease;
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin-top: 30px;
+    letter-spacing: 0.5px;
+    transition: background-color 0.3s ease, transform 0.15s;
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
 }
 
 .update-button:hover {
-    
-    background-color: #4682B4;
+    background-color: #2980B9;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(52, 152, 219, 0.6);
 }
 
-
-
+/* --- LOGIN/REGISTER FORM SPECIFIC STYLES --- */
 
 .login-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-   
-    background: linear-gradient(90deg, #A9CCE3, #5DADE2);
-    padding: 15px 20px;
-    color: #fff;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    background: linear-gradient(90deg, #2C3E50, #34495E);
+    padding: 18px 20px;
 }
-
-.login-header .logo-title {
-    min-width: unset;
-}
-
-
-.login-main.animation-container {
-    overflow: hidden;
-    position: relative;
-   
-    display: block; 
-}
-
-
-#formWrapper {
-    display: flex; 
-    width: 200%; 
-    height: 100%;
- 
-    transition: transform 0.6s cubic-bezier(0.5, 0.05, 0.1, 1); 
-}
-
-
-.form-panel {
-    width: 50%; 
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0; 
-}
-
-
-.animation-container.register-active #formWrapper {
-    
-    transform: translateX(-50%);
-}
-
-
 
 .login-form h2 {
-    
-    color: #34495E;
-    margin-bottom: 25px;
-    font-size: 1.8rem;
-    font-weight: 700;
-}
-
-.login-form form {
-    display: flex;
-    flex-direction: column;
-}
-
-.login-form label {
-    text-align: left;
-    font-weight: 600;
-    color: #555;
-    margin-top: 10px;
-    margin-bottom: 5px;
-    display: none; 
+    color: #2C3E50;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: 1px;
 }
 
 .login-form input {
-    padding: 12px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 1rem;
-    transition: border-color 0.3s;
+    padding: 14px;
+    margin-bottom: 20px;
+    border: 2px solid #D5DBDB;
+    border-radius: 8px;
 }
 
 .login-form input:focus {
-    
-    border-color: #5DADE2;
-    outline: none;
+    border-color: #3498DB;
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
 }
 
 .login-button {
-   
-    background-color: #5DADE2;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1.1rem;
-    font-weight: 700;
-    margin-top: 10px;
-    transition: background-color 0.3s ease, transform 0.1s;
+    background-color: #3498DB;
+    padding: 14px 25px;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin-top: 20px;
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
 }
 
 .login-button:hover {
-   
-    background-color: #4682B4;
-    transform: translateY(-1px);
+    background-color: #2980B9;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(52, 152, 219, 0.6);
 }
 
 .register-link-text {
-    margin-top: 20px;
-    font-size: 0.95rem;
-    color: #666;
+    margin-top: 25px;
+    font-size: 1rem;
+    color: #555;
 }
 
 .register-link-text a {
-   
-    color: #5DADE2;
-    text-decoration: none;
-    font-weight: bold;
+    color: #2C3E50; /* Darker link color */
+    text-decoration: underline;
+    font-weight: 700;
+    transition: color 0.2s;
 }
 
-.login-footer {
-  
-    background: linear-gradient(90deg, #5DADE2, #A9CCE3);
-    color: white;
-    text-align: center;
-    padding: 18px 10px;
-    box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
-    position: static; 
+.register-link-text a:hover {
+    color: #3498DB; /* Electric Blue on hover */
 }
 
-
-
-footer {
-    
-    background: linear-gradient(90deg, #5DADE2, #A9CCE3);
+/* --- FOOTER STYLES (Consistent with Header) --- */
+footer, .login-footer {
+    background: linear-gradient(90deg, #34495E, #2C3E50);
     color: white;
     text-align: center;
-    padding: 18px 10px;
-    box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+    padding: 20px 10px;
+    box-shadow: 0 -4px 12px rgba(0,0,0,0.25);
 }
 
 footer p {
-    font-size: 1.05rem;
-    font-weight: 500;
+    font-size: 1.1rem;
+    font-weight: 600;
 }
 
-
-@media (max-width: 850px) {
+/* --- MEDIA QUERIES (Adjusted for new sizing) --- */
+@media (max-width: 950px) {
     .header {
-        flex-direction: column;
-        align-items: stretch;
-        padding: 10px 15px;
+        padding: 15px 20px;
     }
-
-    .logo-title, .header-middle, .nav-links {
-        flex-basis: auto;
-        width: 100%;
-        max-width: none;
-        padding: 5px 0;
-        text-align: center;
-    }
-    
     .logo-title h1 {
-        font-size: 1.4rem;
+        font-size: 1.6rem;
     }
-
-    .nav-links {
-        display: flex;
-        justify-content: space-around;
-        padding-top: 10px;
+    .header-middle {
+        order: 3;
+        margin-top: 10px;
+        padding-bottom: 10px;
         border-top: 1px solid rgba(255, 255, 255, 0.2);
     }
-    
-    .section-title {
-        font-size: 1.5rem;
+    .nav-links {
+        order: 2;
+        flex-basis: auto;
+        width: auto;
+        min-width: unset;
+        text-align: right;
+        padding: 0;
     }
-    
-    
-    .login-main {
-        min-height: calc(100vh - 100px); 
+    .nav-links a {
+        margin-left: 15px;
+        font-size: 0.95rem;
+    }
+    .category-filters-container {
+        padding: 15px 20px;
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    .category-image {
+        width: 65px; 
+        height: 65px;
+    }
+    .section-title {
+        font-size: 1.8rem;
+    }
+    .menu-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
     }
 }
