@@ -14,7 +14,18 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 let isOtpSent = false;
-const FAKE_OTP = "123456"; // डेमो के लिए नकली OTP
+let currentOTP = null; // Store the generated OTP
+
+/**
+ * Generates a random 5-digit number for the OTP.
+ * This simulates the random number generation.
+ * @returns {string} The 5-digit OTP as a string.
+ */
+function generateRandomOTP() {
+    // यह फ़ंक्शन 10000 से 99999 के बीच एक यादृच्छिक (random) 5-अंकीय संख्या बनाता है।
+    return Math.floor(10000 + Math.random() * 90000).toString();
+}
+
 
 function handleLoginFlow(e) {
     e.preventDefault(); // पेज को रीलोड होने से रोकता है
@@ -32,8 +43,11 @@ function handleLoginFlow(e) {
             return;
         }
 
-        // असली OTP नहीं भेजा जा रहा है, सिर्फ एक नकली OTP अलर्ट में दिखाया जा रहा है।
-        alert(`OTP sent to ${mobileNumber}. \n\nFor this demo, your OTP is: ${FAKE_OTP}`);
+        // Generate the 5-digit random OTP
+        currentOTP = generateRandomOTP(); 
+        
+        // OTP अलर्ट में दिखाएं (Your requested feature)
+        alert(`OTP sent to ${mobileNumber}. \n\nFor this demo, your **5-digit** OTP is: ${currentOTP}`);
 
         // OTP फील्ड दिखाएं
         otpInput.style.display = 'block';
@@ -47,7 +61,8 @@ function handleLoginFlow(e) {
         // --- स्टेप 2: OTP वेरिफाई करें ---
         const enteredOTP = otpInput.value;
 
-        if (enteredOTP === FAKE_OTP) {
+        // Verify against the generated OTP
+        if (enteredOTP === currentOTP) { 
             alert('Login successful!');
             window.location.href = 'cafeteria.html'; // लॉगिन के बाद होम पेज पर जाएं
         } else {
@@ -57,15 +72,18 @@ function handleLoginFlow(e) {
 }
 
 
-// --- आपके बाकी के फंक्शन ---
+// --- बाकी के फ़ंक्शन (Registration, Logout, Profile) ---
 
 function registerUser(e) {
   e.preventDefault();
   const name = document.getElementById('regName').value;
   const email = document.getElementById('regEmail').value;
+  // Mobile field check added (Required as per your final HTML)
+  const mobile = document.getElementById('regMobile') ? document.getElementById('regMobile').value : ''; 
   const password = document.getElementById('regPassword').value;
 
-  localStorage.setItem('user', JSON.stringify({name, email, password}));
+  // Save Name, Email, Mobile, and Password
+  localStorage.setItem('user', JSON.stringify({name, email, mobile, password}));
   alert('Registration successful! Please login.');
   window.location.href = 'login.html';
   return false;
@@ -81,7 +99,7 @@ function loadProfile() {
     
     if (document.getElementById('profileForm')) {
         document.getElementById('profileName').value = profile.name || user.name || '';
-        document.getElementById('profileMobile').value = profile.mobile || '';
+        document.getElementById('profileMobile').value = profile.mobile || user.mobile || ''; 
         document.getElementById('profileEmail').value = user.email || ''; 
         document.getElementById('profileDOB').value = profile.dob || '';
         document.getElementById('profileGender').value = profile.gender || '';
