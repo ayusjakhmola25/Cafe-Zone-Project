@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    
     <header class="header">
         <div class="logo-title">
             <img src="images/cafelogo.png.jpeg" alt="Cafeteria Logo" class="logo">
@@ -15,15 +16,11 @@
 
         <div class="header-middle">
             <div class="search-panel">
-                <input type="text" placeholder="Search restaurant name or cuisine..." class="search-input">
+                <input type="text" placeholder="Search restaurant name..." class="search-input">
                 <span class="mic-icon">&#127908;</span> 
             </div>
-            <div class="veg-nonveg-toggle">
-                <button class="toggle-button active">All</button>
-                <button class="toggle-button veg">Vegetarian</button>
-                <button class="toggle-button nonveg">Non-Vegetarian</button>
             </div>
-        </div>
+        
         <nav class="nav-links">
             <a href="cafeteria.html">Home</a>
             <a href="#">Menu</a>
@@ -62,8 +59,17 @@
                 <p class="category-name">Drinks</p>
             </div>
         </div>
-        <h2 class="section-title">RESTAURANTS DELIVERING TO YOU </h2>
-
+        
+        <div class="section-header-wrap">
+            <h2 class="section-title">RESTAURANTS DELIVERING TO YOU </h2>
+            
+            <div class="veg-nonveg-toggle section-toggle">
+                <button class="toggle-button active">All</button>
+                <button class="toggle-button veg">Vegetarian</button>
+                <button class="toggle-button nonveg">Non-Vegetarian</button>
+            </div>
+        </div>
+        
         <div class="menu-grid">
             
             <div class="menu-item menu-card">
@@ -148,6 +154,20 @@
 
         </div>
     </main>
+
+    <div id="welcomeModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <div class="modal-header">
+                <img src="images/cafelogo.png.jpeg" alt="Logo" style="width: 80px; margin-bottom: 15px;">
+                <h2 id="modalWelcomeText"></h2>
+            </div>
+            <p id="modalMessage" style="font-size: 1.1em; color: #555;">
+                आपका स्वागत है! अब आप Fusion Cafe के स्वादिष्ट मेनू और बेहतरीन ऑफर्स को एक्सप्लोर कर सकते हैं। ऑर्डर करने के लिए तैयार हो जाइए!
+            </p>
+            <button class="modal-button" onclick="redirectToCafeteria()">Continue to Menu</button>
+        </div>
+    </div>
 
     <footer>
         <p>&#9733; Experience the FUSION CAFE difference. Quality You Can Taste | &copy; 2025 FUSION CAFE</p>

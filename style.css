@@ -163,31 +163,10 @@ body {
     transform: scale(1.1);
 }
 
-.veg-nonveg-toggle {
-    background-color: #3498DB; /* Electric Blue background */
-    border-radius: 25px;
-    padding: 4px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-}
+/* ------------------------------------------------------------------- */
+/* --- OLD VEG/NON-VEG TOGGLE STYLES REMOVED FROM HEADER HERE --- */
+/* ------------------------------------------------------------------- */
 
-.toggle-button {
-    border: none;
-    padding: 8px 16px; /* Increased padding */
-    border-radius: 20px;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 0.9rem;
-    background-color: transparent;
-    color: #fff; 
-    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.toggle-button.active {
-    background-color: #ffffff; 
-    color: #2C3E50; /* Dark Blue active text */
-    box-shadow: 0 1px 5px rgba(0,0,0,0.3);
-    transform: scale(1.05);
-}
 
 .nav-links {
     flex-basis: 20%; 
@@ -269,10 +248,21 @@ body {
     text-transform: uppercase;
 }
 
+/* --- NEW WRAPPER FOR TITLE AND TOGGLE --- */
+.section-header-wrap {
+    text-align: center;
+    max-width: 1200px;
+    margin: 40px auto 20px auto; 
+    padding: 0 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 /* --- MAIN CONTENT STYLES --- */
 .section-title {
     text-align: center;
-    margin: 40px 0 20px 0; /* More spacing */
+    margin: 0 0 15px 0; /* Adjusted margin to fit in the new wrapper */
     color: #2C3E50; /* Deep Blue title */
     font-size: 2.2rem;
     font-weight: 800;
@@ -291,6 +281,36 @@ body {
     margin: 10px auto 0;
     border-radius: 2px;
 }
+
+/* --- NEW VEG/NON-VEG TOGGLE STYLES IN MAIN CONTENT --- */
+.veg-nonveg-toggle.section-toggle {
+    background-color: #ffffff; /* White background in the main section */
+    border: 1px solid #D5DBDB;
+    border-radius: 25px;
+    padding: 6px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-top: 10px; 
+}
+
+.veg-nonveg-toggle.section-toggle .toggle-button {
+    border: none;
+    padding: 8px 16px; 
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    background-color: transparent;
+    color: #2C3E50; /* Dark text for default buttons */
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.veg-nonveg-toggle.section-toggle .toggle-button.active {
+    background-color: #3498DB; /* Electric Blue active background */
+    color: #ffffff; /* White active text */
+    box-shadow: 0 1px 5px rgba(0,0,0,0.3);
+    transform: scale(1.05);
+}
+
 
 @keyframes fadeIn {
     from {opacity: 0; transform: translateY(-30px);}
@@ -397,6 +417,112 @@ body {
     text-transform: uppercase;
 }
 
+/* ------------------------------------------------------------------- */
+/* --- NEW: WELCOME MODAL STYLES (OTP Login Success Pop-up) --- */
+/* ------------------------------------------------------------------- */
+
+.modal {
+    /* Full screen overlay */
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.8); /* Darker overlay for focus */
+    backdrop-filter: blur(8px); /* Blur background for modern effect */
+    display: flex; /* Use flex to center the content */
+    justify-content: center;
+    align-items: center;
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.modal-content {
+    background-color: #ffffff;
+    margin: auto;
+    padding: 30px;
+    width: 90%; 
+    max-width: 450px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    position: relative;
+    border-top: 5px solid #3498DB; /* Blue accent bar */
+    animation: modalPopUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Springy effect */
+}
+
+@keyframes modalPopUp {
+    0% {transform: scale(0.7); opacity: 0;}
+    100% {transform: scale(1); opacity: 1;}
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    transition: color 0.2s;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #2C3E50;
+    text-decoration: none;
+}
+
+.modal-header {
+    margin-bottom: 20px;
+}
+
+.modal-header img {
+    border: 3px solid #EAECEE;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+#modalWelcomeText {
+    font-size: 1.8rem;
+    color: #3498DB; /* Electric Blue */
+    margin-top: 15px;
+    font-weight: 800;
+}
+
+#modalMessage {
+    font-size: 1.05rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.modal-button {
+    background-color: #2ECC71; /* Success Green */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 700;
+    transition: background-color 0.3s, transform 0.15s;
+    box-shadow: 0 4px 10px rgba(46, 204, 113, 0.5);
+}
+
+.modal-button:hover {
+    background-color: #27AE60;
+    transform: translateY(-2px);
+}
+
+
 /* --- NEW PROFILE FORM STYLES (Clean and Structured) --- */
 
 .profile-container {
@@ -436,6 +562,7 @@ body {
     font-size: 1rem;
     box-sizing: border-box; 
     transition: border-color 0.3s, box-shadow 0.3s;
+    width: 100%; /* Added width 100% for proper form layout */
 }
 
 .profile-container input:focus,
@@ -465,6 +592,7 @@ body {
     letter-spacing: 0.5px;
     transition: background-color 0.3s ease, transform 0.15s;
     box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+    width: 100%; /* Full width button */
 }
 
 .update-button:hover {
@@ -488,11 +616,21 @@ body {
     letter-spacing: 1px;
 }
 
+.login-form label { /* Added label styling for login form */
+    display: block;
+    text-align: left;
+    font-weight: 700;
+    color: #34495E;
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+
 .login-form input {
     padding: 14px;
     margin-bottom: 20px;
     border: 2px solid #D5DBDB;
     border-radius: 8px;
+    width: calc(100% - 28px); /* Adjusted width */
 }
 
 .login-form input:focus {
@@ -502,12 +640,17 @@ body {
 
 .login-button {
     background-color: #3498DB;
+    color: white; /* Added color: white for button text */
     padding: 14px 25px;
     border-radius: 10px;
     font-size: 1.2rem;
     font-weight: 800;
     margin-top: 20px;
     box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+    border: none; /* Added border: none */
+    width: 100%; /* Full width button */
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .login-button:hover {
@@ -589,5 +732,12 @@ footer p {
     .menu-grid {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 20px;
+    }
+    .modal-content {
+        margin: 20% auto;
+    }
+    /* Hide the old toggle button section in the header on mobile/tablet if it somehow remains */
+    .veg-nonveg-toggle:not(.section-toggle) {
+        display: none !important;
     }
 }

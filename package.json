@@ -1,0 +1,28 @@
+{
+  "name": "mini",
+  "version": "1.0.0",
+  "description": "**Fusion Cafe** is a responsive, single-page application (SPA) style demo showcasing a modern food delivery or cafeteria menu platform. It features a clean, blue-themed UI, dynamic navigation, restaurant listings, and a complete user authentication flow managed purely on the client-side.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ayusjakhmola25/Cafe-Zone-Project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ayusjakhmola25/Cafe-Zone-Project/issues"
+  },
+  "homepage": "https://github.com/ayusjakhmola25/Cafe-Zone-Project#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.15.2",
+    "otp-generator": "^4.0.1",
+    "twilio": "^5.10.3"
+  }
+}

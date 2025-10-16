@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cafe Zone | Login</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
     
@@ -18,23 +18,30 @@
     <main class="login-main">
         <div class="form-container login-form">
             <h2>User Login </h2>
-            <form id="loginForm">
+            <form id="otpLoginForm"> 
                 
                 <label for="loginMobile">Mobile Number</label>
                 <input type="tel" id="loginMobile" placeholder="Enter your 10-digit mobile number" required pattern="[0-9]{10}">
-                
-                <label for="loginOTP" id="otp-label" style="display:none;">OTP</label>
-                <input type="text" id="loginOTP" placeholder="Enter OTP" style="display:none;" inputmode="numeric"> 
-                
-                <button type="button" id="loginBtn" class="login-button">Send OTP</button>
+
+                <div id="otpMessage" style="color: green; margin: 10px 0; font-weight: bold;">
+                    </div>
+
+                <div id="otpSection" style="display: none;">
+                    <label for="loginOTP">OTP</label>
+                    <input type="text" id="loginOTP" placeholder="Enter 6-digit OTP" pattern="[0-9]{6}" required>
+                    <p id="timer" style="color: #007bff; font-size: 0.9em; margin-top: 5px;"></p>
+                </div>
+
+                <button type="button" id="sendOtpBtn" class="login-button">Send OTP</button>
+                <button type="submit" id="loginBtn" class="login-button" style="display: none;">Login</button>
                 
                 <p class="register-link-text">Don’t have an account? <a href="register.html">Register Here</a></p>
             </form>
         </div>
     </main>
 
-    <footer class="login-footer">
-        <p>&copy; 2025 FUSION CAFE. Quality You Can Taste.</p>
+    <footer>
+        <p>&#9733; Experience the FUSION CAFE difference. Quality You Can Taste | &copy; 2025 FUSION CAFE</p>
     </footer>
 
     <script src="script.js"></script>
