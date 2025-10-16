@@ -249,47 +249,98 @@ body {
 }
 
 /* --- NEW WRAPPER FOR TITLE AND TOGGLE --- */
+/* Unique Look: Changed background and clip-path for a unique design */
 .section-header-wrap {
     text-align: center;
     max-width: 1200px;
     margin: 40px auto 20px auto; 
-    padding: 0 30px;
+    padding: 30px 30px 20px; /* Increased top/bottom padding */
     display: flex;
     flex-direction: column;
     align-items: center;
+    perspective: 1000px; 
+    
+    /* Unique Background Design */
+    background: linear-gradient(135deg, #3498DB, #2C3E50); /* Blue to Dark Blue Gradient */
+    color: white;
+    /* Fancy shape using clip-path (subtle downward arrow/banner look) */
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%); 
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
 /* --- MAIN CONTENT STYLES --- */
+
+/* Keyframes for Title Fly-In */
+@keyframes flyInPulse {
+    0% {opacity: 0; transform: translateY(-50px) rotateX(-90deg);}
+    80% {opacity: 1; transform: translateY(0) rotateX(0deg);}
+    90% {transform: scale(1.02);}
+    100% {transform: scale(1);}
+}
+
+/* Keyframes for Neon Glow Effect */
+@keyframes neonGlow {
+    0%, 100% {
+        text-shadow: 
+            0 0 5px #fff, 
+            0 0 10px #fff, 
+            0 0 20px #3498DB, 
+            0 0 40px #3498DB, 
+            0 0 50px #3498DB, 
+            0 0 60px #3498DB;
+    }
+    50% {
+        text-shadow: 
+            0 0 2px #fff, 
+            0 0 5px #fff, 
+            0 0 10px #3498DB, 
+            0 0 20px #3498DB, 
+            0 0 30px #3498DB;
+    }
+}
+
+
 .section-title {
     text-align: center;
-    margin: 0 0 15px 0; /* Adjusted margin to fit in the new wrapper */
-    color: #2C3E50; /* Deep Blue title */
-    font-size: 2.2rem;
-    font-weight: 800;
+    margin: 0 0 15px 0; 
+    color: #ffffff; /* White text for the dark background */
+    font-size: 2.5rem; /* Slightly larger title */
+    font-weight: 900; /* Extra bold */
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px; /* Increased letter spacing */
     position: relative;
-    animation: fadeIn 1.5s ease;
+    
+    /* Unique Title Animation */
+    animation: 
+        flyInPulse 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards, 
+        neonGlow 3s ease-in-out infinite alternate 1.5s; /* Added neon glow */
+    transform-style: preserve-3d;
 }
 
 .section-title::after {
-    content: '';
-    display: block;
-    width: 50px;
-    height: 4px;
-    background-color: #3498DB; /* Electric Blue accent line */
-    margin: 10px auto 0;
-    border-radius: 2px;
+    /* Removed the accent line, as the neon glow acts as a better accent */
+    content: none;
 }
 
 /* --- NEW VEG/NON-VEG TOGGLE STYLES IN MAIN CONTENT --- */
+
+/* Keyframes for Toggle Fly-In */
+@keyframes toggleFlyIn {
+    from {opacity: 0; transform: translateY(30px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
 .veg-nonveg-toggle.section-toggle {
-    background-color: #ffffff; /* White background in the main section */
-    border: 1px solid #D5DBDB;
+    /* Changed background to transparent to blend with the header wrap */
+    background-color: rgba(255, 255, 255, 0.1); 
+    border: 1px solid rgba(255, 255, 255, 0.4);
     border-radius: 25px;
     padding: 6px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
     margin-top: 10px; 
+    
+    /* Unique Toggle Animation */
+    animation: toggleFlyIn 1.5s ease-out forwards;
 }
 
 .veg-nonveg-toggle.section-toggle .toggle-button {
@@ -300,54 +351,77 @@ body {
     font-weight: 600;
     font-size: 0.9rem;
     background-color: transparent;
-    color: #2C3E50; /* Dark text for default buttons */
+    color: #ECF0F1; /* Light text for dark background */
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .veg-nonveg-toggle.section-toggle .toggle-button.active {
-    background-color: #3498DB; /* Electric Blue active background */
-    color: #ffffff; /* White active text */
+    background-color: #ffffff; /* White active background */
+    color: #3498DB; /* Electric Blue active text */
     box-shadow: 0 1px 5px rgba(0,0,0,0.3);
     transform: scale(1.05);
 }
 
 
-@keyframes fadeIn {
-    from {opacity: 0; transform: translateY(-30px);}
-    to {opacity: 1; transform: translateY(0);}
-}
-
+/* Menu Grid Styling */
 .menu-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Larger minimum size */
-    gap: 30px; /* Wider gap */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+    gap: 30px; 
     padding: 0 30px 60px;
     max-width: 1200px;
     margin: 0 auto;
-    animation: fadeIn 2s ease;
 }
 
-/* Restaurant Card Styling (Sleeker and more impactful) */
+/* Keyframes for Card Staggered Fade In */
+@keyframes cardFadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+
+/* Restaurant Card Styling (3D look maintained) */
 .menu-item.menu-card {
     background: #ffffff;
     border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15); 
     overflow: hidden;
     text-align: left;
+    
+    transform-style: preserve-3d;
+    
     transition: transform 0.4s ease, box-shadow 0.4s ease, border 0.4s ease;
     border: 3px solid transparent;
     cursor: pointer;
+    
+    animation: cardFadeIn 0.8s ease-out forwards;
+    opacity: 0; 
 }
 
+/* Staggered Delay */
+.menu-grid .menu-item:nth-child(1) { animation-delay: 0.2s; }
+.menu-grid .menu-item:nth-child(2) { animation-delay: 0.4s; }
+.menu-grid .menu-item:nth-child(3) { animation-delay: 0.6s; }
+.menu-grid .menu-item:nth-child(4) { animation-delay: 0.8s; }
+.menu-grid .menu-item:nth-child(5) { animation-delay: 1.0s; }
+.menu-grid .menu-item:nth-child(6) { animation-delay: 1.2s; }
+.menu-grid .menu-item:nth-child(7) { animation-delay: 1.4s; }
+.menu-grid .menu-item:nth-child(8) { animation-delay: 1.6s; }
+
+
 .menu-item.menu-card:hover {
-    transform: translateY(-10px) scale(1.02); /* More dynamic lift */
-    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
-    border: 3px solid #3498DB; /* Electric Blue border on hover */
+    /* 3D Tilt and Lift on Hover */
+    transform: translateY(-12px) rotateX(3deg) rotateY(-3deg) scale(1.03); 
+    /* Unique Multi-Layered Shadow */
+    box-shadow: 
+        0 20px 50px rgba(0,0,0,0.3), /* Main shadow */
+        0 0 50px rgba(52, 152, 219, 0.5); /* Blue glow */
+    border: 3px solid #3498DB; 
 }
 
 .image-block {
     width: 100%;
-    height: 160px; /* Taller image block */
+    height: 160px; 
     overflow: hidden;
 }
 
@@ -359,11 +433,11 @@ body {
 }
 
 .menu-item.menu-card:hover .item-image {
-    transform: scale(1.1); /* Zoom effect */
+    transform: scale(1.15); /* More prominent Zoom effect */
 }
 
 .item-details {
-    padding: 15px 18px; /* More padding */
+    padding: 15px 18px; 
 }
 
 .title-rating {
@@ -376,7 +450,7 @@ body {
 .item-title {
     font-size: 1.25rem;
     font-weight: 800;
-    color: #2C3E50; /* Deep Blue title */
+    color: #2C3E50; 
     margin: 0;
     flex-grow: 1;
     padding-right: 5px;
@@ -384,7 +458,7 @@ body {
 }
 
 .item-rating {
-    background-color: #2ECC71; /* A refreshing Green for rating */
+    background-color: #2ECC71; 
     color: white;
     padding: 5px 10px;
     border-radius: 6px;
@@ -398,14 +472,14 @@ body {
 }
 
 .star-icon {
-    color: #F1C40F; /* Gold star */
+    color: #F1C40F; 
     font-size: 1rem;
     line-height: 1;
 }
 
 .item-description {
     font-size: 0.9rem;
-    color: #7F8C8D; /* Soft gray description */
+    color: #7F8C8D; 
     margin: 0 0 10px 0;
     font-style: italic;
 }
@@ -413,12 +487,12 @@ body {
 .item-price {
     font-size: 1.1rem;
     font-weight: 800;
-    color: #3498DB; /* Electric Blue price */
+    color: #3498DB; 
     text-transform: uppercase;
 }
 
 /* ------------------------------------------------------------------- */
-/* --- NEW: WELCOME MODAL STYLES (OTP Login Success Pop-up) --- */
+/* --- WELCOME MODAL STYLES (OTP Login Success Pop-up) --- */
 /* ------------------------------------------------------------------- */
 
 .modal {
