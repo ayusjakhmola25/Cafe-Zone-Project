@@ -3,6 +3,7 @@
 // --- CONFIGURATION ---
 const BACKEND_URL = 'http://localhost:3000'; 
 
+
 // DOM Elements (login.html)
 const loginForm = document.getElementById('otpLoginForm');
 const sendOtpBtn = document.getElementById('sendOtpBtn');
